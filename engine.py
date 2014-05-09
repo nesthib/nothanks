@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-#coding: utf-8
+# -*- coding: utf-8 -*-
 
 import random
 import bisect
 from uuid import uuid4
+
 
 class Player(object):
     """Player"""
@@ -12,20 +13,23 @@ class Player(object):
         self.coins = 11
         self.score = -self.coins
         self.cards = []
-        self.uuid  = uuid
+        self.uuid = uuid
         print(uuid)
         if not uuid:
             self.uuid = uuid4().hex
 
     def __repr__(self):
-        return str('%s: %s points, %s coins, %s' % (self.name, self.score, self.coins, self.cards))
+        return str('%s: %s points, %s coins, %s'
+                   % (self.name, self.score, self.coins, self.cards))
 
     def group_successive(self, cards=None):
         if not cards:
             cards = self.cards
         if not cards:
             return []
-        i=cards[0] ; g = [] ; l = []
+        i = cards[0]
+        g = []
+        l = []
         for c in cards:
             if c > i+1:
                 g.append(l)
@@ -45,32 +49,36 @@ class Player(object):
         bisect.insort(self.cards, c)
         self.update_score()
 
+
 class Game(object):
     """Game"""
     def __init__(self, nplayer=0):
-        cards = range(3,36)
+        cards = range(3, 36)
         random.shuffle(cards)
-        self.deck    = cards[9:]
+        self.deck = cards[9:]
         self.discard = cards[:9]
-        self.coins   = 0
-        self.players = [ Player('player%s' % (i+1)) for i in range(nplayer) ]
+        self.coins = 0
+        self.players = [Player('player%s' % (i+1)) for i in range(nplayer)]
         self.players_by_uuid = {}
         self.nextplayer = None
-        self.cardup  = None
+        self.cardup = None
         self.started = False
 
     def __repr__(self):
         player = None
         if self.players and self.nextplayer:
             player = self.nextplayer
-        return ('Card up: %s (%s coins)\nNext Player: %s\nDeck (%s): %s' % (str(self.cardup),
-                                                                                            str(self.coins),
-                                                                                            str(player),
-                                                                                            str(len(self.deck)),
-                                                                                            ' '.join(map(str, self.deck))))
+        return ('Card up: %s (%s coins)\nNext Player: %s\nDeck (%s): %s'
+                % (
+                    str(self.cardup),
+                    str(self.coins),
+                    str(player),
+                    str(len(self.deck)),
+                    ' '.join(map(str, self.deck))
+                ))
 
     def addplayer(self, name=None, uuid=None):
-        if not self.started and not name in [ p.name for p in self.players ]:
+        if not self.started and name not in [p.name for p in self.players]:
             self.players.append(Player(name, uuid))
 
     def play(self, nothanks=True, player=None):
@@ -83,7 +91,9 @@ class Game(object):
             player = self.nextplayer
         if nothanks:
             if player.coins > 0:
-                self.nextplayer = self.players[(self.players.index(self.nextplayer)+1)%len(self.players)]
+                self.nextplayer = self.players[
+                    (self.players.index(self.nextplayer)+1) % len(self.players)
+                ]
                 player.coins -= 1
                 player.score += 1
                 self.coins += 1
@@ -114,14 +124,17 @@ class Game(object):
             self.nextplayer = random.choice(self.players)
             self.players_by_uuid = {p.uuid: p for p in self.players}
             self.started = True
-            self.cardup  = self.deck.pop()
+            self.cardup = self.deck.pop()
             print(self)
 
     def end(self, get_winner=True):
         self.started = False
         for p in self.players:
             p.update_score()
-        p = {p.uuid: p.score for p in sorted(self.players, key=lambda p: p.score)}
+        p = {
+            p.uuid: p.score
+            for p in sorted(self.players, key=lambda p: p.score)
+        }
         winner = sorted(p.items(), key=lambda i: i[1])[0]
         for player in self.players:
             print(player)
@@ -133,5 +146,3 @@ class Game(object):
 if __name__ == '__main__':
     g = Game(3)
     g.start()
-
-
