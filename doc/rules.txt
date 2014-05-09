@@ -1,0 +1,23 @@
+= Non Merci !
+////
+:author: nesthib
+:email: nesthib@tdct.org
+////
+:lang: fr
+:toc:
+
+[[rules]]
+*Non merci* est un jeu pour 3 à 5 joueurs.
+Le jeu comprend des cartes numérotées de 3 à 35 et 11 jetons par joueur.
+
+== Principe de jeu
+À chaque tour la carte supérieure de la pioche est retournée face visible. Le joueur dont c'est le tour décide s'il prend la carte et les points de malus associés ou s'il paie un jeton pour ne pas la prendre. S'il refuse la carte, c'est au joueur suivant de jouer, sinon il prend la carte et les jetons payés jusque là puis retourne la carte suivant de la pioche et recommence un tour. Les cartes prises sont posées face visible devant le joueur. Un joueur qui ne peut payer doit prendre la carte proposée (et les jetons associés). Le principe est de collecter le moins de points possible lorsque la pioche est épuisée.
+
+== Valeur des cartes et des jetons
+* Chaque carte vaut le nombre de points de malus indiqué sur sa face visible.
+* Lorsque des cartes forment une suite (ex. 9 10 11), seule la carte de valeur la plus faible compte (ex. 9). Il est donc intéressant de collecter des cartes formant une suite.
+* À la fin du jeu, chaque jeton compte un point de bonus.
+
+== Déroulement du jeu
+Les cartes sont mélangées et 9 cartes sont retirées face cachée. Chaque joueur reçoit 11 jetons et la première carte de la pioche est retournée.
+Chaque joueur décide ensuite de prendre la carte ou de payer pour passer. Quand la pioche est épuisée on compte les points selon les règles détaillées précédemment et le joueur avec le moins de points est déclaré vainqueur.

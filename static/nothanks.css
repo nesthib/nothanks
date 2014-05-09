@@ -1,0 +1,144 @@
+html, body { width: 100%; margin: 0; }
+/*    div { border: 1px solid red; }*/
+@font-face {
+	font-family: Candice;
+	src: local("Candice"), url(static/candice.ttf) format("truetype");
+}
+.board {
+    height: 90vh;
+    border: 2px solid blue;
+    background-color: #fff5be;
+    padding: 20px 20px 20px 20px;
+}
+.players {
+    height: 70%;
+    margin-bottom: 20px;
+}
+.player {
+    display: inline-block;
+    vertical-align: middle;
+    min-height: 155px;
+/*        width: 48%;*/
+    width: 48%;
+/*        width: auto;*/
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    margin-bottom: 5px;
+}
+.cardzone {
+  position: relative;
+  display: inline-block;
+}
+.cardgroup {
+    display: inline-block;
+    border: 0px solid green;
+    padding: 0 0 0 0px;
+    margin-right: 10px;
+}
+.card {
+/*    margin: 0 0 0 -60px;
+    position: relative;*/
+    float: left;
+    transform:rotate(-2deg);
+    -webkit-transform: rotate(-2deg);
+}
+.card+.card {
+    margin-left: -60px;
+}
+.card-pop {
+    margin-top: -20px;
+    margin-bottom: 20px;
+/*    padding-bottom: 20px;*/
+}
+.card-up {
+    margin: 0 0 0 0;
+/*    visibility: hidden;*/
+}
+#card-0 {
+    visibility: hidden;
+};
+.playerinfo  {
+/*    display: inline-block;*/
+    vertical-align: top;
+/*    position: relative;*/
+    padding: 5px 0 0 5px;
+    }
+.playerinfo0  {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    padding: 0 0 0 0;
+    }
+.deck  {
+    height: 150px;
+    width: 87px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px 50px 20px 50px;
+}
+.chat, .deck, .player0info {
+    display: inline-block;
+    min-height: 50px;
+    min-width: 50px;
+}
+.player0 {
+    vertical-align: top;
+    height: 40%;
+    min-height: 129px;
+    max-height: 30em;
+/*        width: 57%;*/
+    width: auto;
+    margin-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.r270 {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.fancytext {
+    font-family: Candice;
+    font-size: 120%;
+    display: table-cell;
+    margin: auto;
+}
+.nextplayer {
+    font-family: Candice;
+    font-size: 200%;
+}
+.coin-common-div {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+}
+.coin-player {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hidden {
+    visibility: hidden;
+}
+.nodisplay {
+    display: none;
+}
+.playzone {
+/*        position:fixed;*/
+}
+.debug {
+    display: none;
+/*    display: inline-block;*/
+/*    visibility: hidden;*/
+    border: 1px solid black;
+/*    height: 129px;*/
+}
+.inlineform {
+    display: inline-block;
+}
