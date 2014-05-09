@@ -20,7 +20,7 @@ def index():
     # if not request.cookies.get('nothanks'):
     #    resp.set_cookie('nothanks', uuid4().hex)
     print('session: %s' % session)
-    if 'uudi' not in session:
+    if 'uuid' not in session:
         session['uuid'] = uuid4().hex
     return render_template('nothanks.html')
 #    return resp
