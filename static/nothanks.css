@@ -1,17 +1,27 @@
 html, body { width: 100%; margin: 0; }
 /*    div { border: 1px solid red; }*/
+/*@font-face {*/
+    /*font-family: comic_font;*/
+    /*src: url('/static/komikandy.ttf');*/
+/*}*/
 @font-face {
-	font-family: Candice;
-	src: local("Candice"), url(static/candice.ttf) format("truetype");
+    font-family: comic_font;
+    src: url('komikandy.eot');
+    src: url('komikandy.eot?#iefix') format('embedded-opentype'),
+         url('komikandy.woff') format('woff'),
+         url('komikandy.ttf') format('truetype'),
+         url('komikandy.svg#komikandyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 .board {
-    height: 90vh;
+    height: 97vh;
     border: 2px solid blue;
     background-color: #fff5be;
     padding: 20px 20px 20px 20px;
 }
 .players {
-    height: 70%;
+    /*height 70%;*/
     margin-bottom: 20px;
 }
 .player {
@@ -27,8 +37,9 @@ html, body { width: 100%; margin: 0; }
     margin-bottom: 5px;
 }
 .cardzone {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
+    max-width: 80%;
 }
 .cardgroup {
     display: inline-block;
@@ -51,6 +62,9 @@ html, body { width: 100%; margin: 0; }
     margin-bottom: 20px;
 /*    padding-bottom: 20px;*/
 }
+#card-up-div {
+    margin: 20px 50px 0;
+}
 .card-up {
     margin: 0 0 0 0;
 /*    visibility: hidden;*/
@@ -71,30 +85,34 @@ html, body { width: 100%; margin: 0; }
     padding: 0 0 0 0;
     }
 .deck  {
-    height: 150px;
-    width: 87px;
+    /*height: 150px;*/
+    /*width: 87px;*/
     border: 2px solid gray;
     border-radius: 10px;
     position: relative;
     display: inline-block;
     vertical-align: top;
-    padding: 20px 50px 20px 50px;
+    /*padding: 20px 50px 20px 50px;*/
 }
 .chat, .deck, .player0info {
     display: inline-block;
-    min-height: 50px;
+    min-height: 200px;
     min-width: 50px;
 }
 .player0 {
     vertical-align: top;
-    height: 40%;
+    /*height: 40%;*/
     min-height: 129px;
-    max-height: 30em;
+    max-width: 80%;
+    /*max-height: 30em;*/
 /*        width: 57%;*/
     width: auto;
-    margin-right: 50px;
+    /*margin-right: 50px;*/
     padding-top: 20px;
     padding-bottom: 20px;
+}
+#p0-name-p, #nickinput {
+    margin-bottom: 8px;
 }
 .r270 {
     -webkit-transform: rotate(-90deg);
@@ -103,15 +121,23 @@ html, body { width: 100%; margin: 0; }
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
-.fancytext {
-    font-family: Candice;
+.fancytext, .fancytext0 {
+    font-family: comic_font;
     font-size: 120%;
-    display: table-cell;
     margin: auto;
 }
+.fancytext {
+    display: table-cell;
+}
+.fancytext0, #nickdata {
+    margin-top: -15px;
+}
+#nextplayer-div {
+    text-align: center;
+}
 .nextplayer {
-    font-family: Candice;
-    font-size: 200%;
+    font-family: comic_font;
+    font-size: 150%;
 }
 .coin-common-div {
     position: absolute;
@@ -131,6 +157,14 @@ html, body { width: 100%; margin: 0; }
 }
 .playzone {
 /*        position:fixed;*/
+}
+.help-div {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+.help {
+    font-size: 200%;
 }
 .debug {
     display: none;

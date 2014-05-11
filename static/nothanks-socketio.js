@@ -1,6 +1,14 @@
 $(document).ready(function() {
     var socket = io.connect('http://' + document.domain + ':' + location.port + '/chat');
     var socket_game = io.connect('http://' + document.domain + ':' + location.port + '/game');
+    socket.on('notif', function(data) {
+        notification = {text: data.message,
+                        layout: data.layout,
+                        timeout: data.timeout,
+                        type: data.type,
+                       };
+        var n = noty(notification);
+    });
     socket.on('chatoutput', function(msg) {
         $('#textarea').val($('#textarea').val() + msg.data + '\n');
         $('#textarea').scrollTop($('#textarea')[0].scrollHeight);
@@ -25,19 +33,25 @@ $(document).ready(function() {
         socket.emit('nickinput', {data: $('#nickdata').val()});
         return false;
     });
+    socket_game.on('gamestart', function(msg) {
+        update_players(msg.players, true);
+    });
     socket_game.on('gameplayers', function(msg) {
-        var players = {}; var n = 1;
-        for (var i=0; i<msg.players.length; i++) {
-          if (msg.players[i][0] == $('#uuid').data('uuid')) {
-            var n = 0;
-            players[msg.players[i][0]] = {'num':0,   'name':msg.players[i][1]};
-            update_player_name(0, msg.players[i][1]);
-          } else {
-            players[msg.players[i][0]] = {'num':i+n, 'name':msg.players[i][1]};
-            update_player_name(i+n, msg.players[i][1]);
-          };
-        };
-        $('#uuid').data('players', players);
+        update_players(msg.players);
+        //var players = {}; var n = 1;
+        //for (var i=0; i<msg.players.length; i++) {
+          //if (msg.players[i][0] == $('#uuid').data('uuid')) {
+            //var n = 0;
+            //players[msg.players[i][0]] = {'num':0,   'name':msg.players[i][1]};
+            //update_player_name(0, msg.players[i][1]);
+            //update_player_score(0, 'prêt');
+          //} else {
+            //players[msg.players[i][0]] = {'num':i+n, 'name':msg.players[i][1]};
+            //update_player_name(i+n, msg.players[i][1]);
+            //update_player_score(i+n, 'prêt');
+          //};
+        //};
+        //$('#uuid').data('players', players);
     });
     socket_game.on('gameoutput', function(msg) {
       //  $('#textarea').val($('#textarea').val() + msg.text + '\n');
@@ -71,18 +85,14 @@ $(document).ready(function() {
         };
     });
     socket_game.on('nextplayer', function(msg) {
-        var name = $('#uuid').data('players')[msg.player]['name'];
+        //var name = $('#uuid').data('players')[msg.player]['name'];
+        var name = msg.player;
         document.getElementById('nextplayer').textContent = name;
     });
-    socket_game.on('gamewinner', function(msg) {
-        var winner = $('#uuid').data('players')[uuid]['name']
-        alert('Le gagnant est '+winner);
-    });
-//    socket_game.on('cards_update_old', function(msg) {
-//        $('#textarea').val($('#textarea').val() + '\n[' + msg.cardnum + ']' + '\n');
-//        var blabla = msg.cardnum;
-//        update_hand(0, msg.cardnum);
-//    });
+    //socket_game.on('gamewinner', function(msg) {
+        //var winner = $('#uuid').data('players')[uuid]['name']
+        //alert('Le gagnant est '+winner);
+    //});
     socket_game.on('gameinfo', function(msg) {
         $('#card').text(msg.card);
         $('#bonus').text(msg.bonus);

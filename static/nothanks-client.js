@@ -38,7 +38,8 @@ function custom_card(card) {
   var texts = SVG.getElementsByTagName("tspan");
   var num = card.id.split('-')[1];
   for (var i=0; i<texts.length; i++) texts[i].textContent = num;
-  if (num in cards_colors) { SVG.getElementById('bg_rect').style.fill = cards_colors[num] };
+  if (num in cards_colors) { var color = cards_colors[num] } else { var color = '#bebfff'};
+  SVG.getElementById('bg_rect').style.fill = color;
   if (card.classList.contains('hl')) { SVG.getElementById('border').style.fill = '#FF0000' };
 };
 function custom_cards() {
@@ -94,22 +95,31 @@ function update_hand(player, num) {
   cminus = document.getElementById('card-'+(num-1))
   if (zone.contains(cplus)) {
     cplus.parentNode.insertBefore(card, cplus);
+    if (zone.contains(cminus)) {
+      mergediv(cminus.parentNode, cplus.parentNode);
+    };
   } else if (zone.contains(cminus)) {
     cminus.parentNode.appendChild(card);
   } else {
     var group = document.createElement("div");
     group.className = "cardgroup";
     group.appendChild(card);
-    zone.appendChild(group);
-  };
-  if (zone.contains(cplus) && zone.contains(cminus)) {
-    mergediv(cminus.parentNode, cplus.parentNode);
+    for (var i=num+2; i < 35+1; i++) {
+        var cnext = document.getElementById('card-'+i)
+        if (zone.contains(cnext)) {
+            zone.insertBefore(group, cnext.parentNode)
+            break;
+        };
+    };
+    if (!group.parentNode) {
+      zone.appendChild(group);
+    };
   };
   //setTimeout(custom_cards, 200);
   //setTimeout(custom_cards, 500);
 };
 function update_coins(id, coins) {
-  var coin = document.getElementById(id) 
+  var coin = document.getElementById(id)
   if (coins == 0) {
     coin.classList.add('hidden')
   } else {
@@ -117,11 +127,32 @@ function update_coins(id, coins) {
   };
   coin.getSVGDocument().getElementById('value').textContent = coins;
 };
+function update_players(players, hideempty) {
+  var p = {}; var n = 1;
+  for (var i=0; i<players.length; i++) {
+    if (players[i][0] == $('#uuid').data('uuid')) {
+      var n = 0;
+      p[players[i][0]] = {'num':0,   'name':players[i][1]};
+      update_player_name(0, players[i][1]);
+      update_player_score(0, 'prêt');
+    } else {
+      p[players[i][0]] = {'num':i+n, 'name':players[i][1]};
+      update_player_name(i+n, players[i][1]);
+      update_player_score(i+n, 'prêt');
+    };
+  };
+  if(!(typeof(hideempty)=='undefined') && hideempty) {
+    for (var i=players.length; i<5+1; ++i) {
+      document.getElementById('player'+i).classList.add('nodisplay')
+    };
+  };
+  $('#uuid').data('players', p);
+};
 function update_player_name(num, name) {
   document.getElementById('p'+num+'-name').textContent = name;
 };
 function update_player_score(num, score) {
-  document.getElementById('p'+num+'-score').textContent = name;
+  document.getElementById('p'+num+'-score').textContent = score;
 };
 function mergediv(div1, div2) {
     //div1.innerHTML = div1.innerHTML + div2.innerHTML;
@@ -136,6 +167,47 @@ function toggleNickinputForm() {
         document.getElementById('nickinput').classList.add('nodisplay');
         document.getElementById('p0-name-p').classList.remove('nodisplay');
     };
+};
+function game_reset() {
+    // remove player hands
+    var cz = document.getElementsByClassName('cardzone');
+    for (var i=0; i < cz.length; i++) {
+        //cz[i].parentNode.removeChild(cz[i])
+        cz[i].remove()
+    }
+    // reset deck and coins
+    update_cardup('n!')
+    update_coins('coinC', 0)
+    update_coins('coinP', 0)
+    var ns = document.getElementsByClassName('nick')
+    var ss = document.getElementsByClassName('score')
+    for (var i=0; i<ns.length; i++) {
+        ns[i].textContent = ''
+        ss[i].textContent = 'ne joue pas'
+    }
+};
+function rules() {
+    r = "<h1>Rules</h1>\
+    <p>There are <em>33</em> cards from <em>3</em> to <em>35</em> in the deck.\
+    Nobody wants them as they are negatives points.\
+    At your turn, you can choose to pay 1 coin and leave the card or take it…\
+    and the negative points.</p>\
+    <p>Luckily, if you choose to pick the card you also get the coins that\
+    everyone payed so far to refuse the card. Also, if several of your cards\
+    form a run (e.g., 25/25/26), only the smallest one counts!</p>\
+    <p>When the game ends, the player with the least points wins.</p>\
+    <h2>Moar rulz</h2>\
+    <ul><li><em>9</em> random cards are missing to avoid long runs.</li>\
+    <li>If you pick a card, this is still your turn to play.</li>\
+    <li>If you have no coins, <em>you shall not pass!</em> Take the card.</li>\
+    <li>The coins you don't use are bonus points!\
+    <em>-1 point</em> for each of them.</li></ul>\
+    <h2>Tips</h2>\
+    <ul><li>Be patient, let other people pay for this card they don't want!</li>\
+    <li>Be safe, don't waste all your coins,\
+    you'll have to take a card sometime anyway…</li></ul>"
+
+    var popup_rules = noty({'layout': 'bottom', 'text': r});
 };
 window.onload = on_load;
 

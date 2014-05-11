@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 import random
 import bisect
@@ -85,8 +85,8 @@ class Game(object):
         if not self.started:
             print('Game not started yet')
             return
-#        if len(self.deck) == 0:
-#            print('Game is over (%s won)' % self.end(True))
+        # if len(self.deck) == 0:
+            # print('Game is over (%s won)' % self.end(True))
         if not player:
             player = self.nextplayer
         if nothanks:
@@ -115,10 +115,10 @@ class Game(object):
         print(self)
         return True
 
-    def start(self):
+    def start(self, init=True):
         if not self.started and len(self.players) >= 2:
             players = self.players
-            if len(self.deck) == 0:
+            if init:
                 self.__init__()
             self.players = players
             self.nextplayer = random.choice(self.players)

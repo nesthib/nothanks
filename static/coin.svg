@@ -34,9 +34,9 @@
    fit-margin-left="0"
    fit-margin-right="0"
    fit-margin-bottom="0"
-   inkscape:zoom="8.9726125"
-   inkscape:cx="31.42816"
-   inkscape:cy="21.798613"
+   inkscape:zoom="11.215766"
+   inkscape:cx="9.7105342"
+   inkscape:cy="19.778079"
    inkscape:window-x="0"
    inkscape:window-y="24"
    inkscape:window-maximized="1"
@@ -68,6 +68,18 @@
      id="stop3510"
      style="stop-color:#000000;stop-opacity:0"
      offset="1" /></linearGradient>
+     <style type="text/css">
+       @font-face {
+           font-family: Komikandy;
+           src: url('komikandy.eot');
+           src: url('komikandy.eot?#iefix') format('embedded-opentype'),
+                url('komikandy.woff') format('woff'),
+                url('komikandy.ttf') format('truetype'),
+                url('komikandy.svg#komikandyregular') format('svg');
+           font-weight: normal;
+           font-style: normal;
+       }
+    </style>
 <filter
    color-interpolation-filters="sRGB"
    id="Gaussian_Blur">
@@ -515,15 +527,16 @@
 <text
    sodipodi:linespacing="125%"
    id="value"
-   y="23.2542"
-   x="18.049572"
+   y="27.114199"
+   x="18.817854"
    style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;font-family:candice;-inkscape-font-specification:candice"
    xml:space="preserve"><tspan
-     y="23.2542"
-     x="18.049572"
+     y="27.114199"
+     x="18.817854"
      id="tspan4037"
      sodipodi:role="line"
-     style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none">n!</tspan></text>
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;font-family:Komikandy;-inkscape-font-specification:Komikandy">n!</tspan></text>
+
 
 
 

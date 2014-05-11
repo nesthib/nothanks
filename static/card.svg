@@ -17,6 +17,20 @@
    sodipodi:docname="card.svg">
   <defs
      id="defs5034">
+    <style
+       type="text/css"
+       id="style4">
+       @font-face {
+           font-family: Komikandy;
+           src: url('komikandy.eot');
+           src: url('komikandy.eot?#iefix') format('embedded-opentype'),
+                url('komikandy.woff') format('woff'),
+                url('komikandy.ttf') format('truetype'),
+                url('komikandy.svg#komikandyregular') format('svg');
+           font-weight: normal;
+           font-style: normal;
+       }
+    </style>
     <filter
        id="filter3003"
        inkscape:label="shadow">
@@ -60,9 +74,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.7206525"
-     inkscape:cx="71.786685"
-     inkscape:cy="75.162467"
+     inkscape:zoom="1.8440049"
+     inkscape:cx="51.161371"
+     inkscape:cy="71.641076"
      inkscape:document-units="px"
      inkscape:current-layer="g5591"
      showgrid="false"
@@ -84,6 +98,8 @@
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title />
+        <cc:license
+           rdf:resource="" />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -116,13 +132,13 @@
       <text
          sodipodi:linespacing="125%"
          id="center_text"
-         y="432.53552"
-         x="245.69626"
-         style="font-size:167.43399048000000562px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f9f9f9;fill-opacity:1;stroke:#000000;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue;filter:url(#filter3003)"
+         y="455.49371"
+         x="248.59741"
+         style="font-size:136.04011536px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:1;filter:url(#filter3003);font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue"
          xml:space="preserve"><tspan
-           style="font-size:167.43399048000000562px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Candice;-inkscape-font-specification:Candice Bold;fill:#f9f9f9;stroke:#000000"
-           y="432.53552"
-           x="245.69626"
+           style="font-size:136.04011536px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;fill:#f9f9f9;stroke:#000000;stroke-width:1;font-family:Komikandy;-inkscape-font-specification:Komikandy Bold"
+           y="455.49371"
+           x="248.59741"
            id="center"
            sodipodi:role="line">n!</tspan></text>
       <path
@@ -133,12 +149,12 @@
       <text
          sodipodi:linespacing="125%"
          id="tl_text"
-         y="291.41159"
+         y="296.64389"
          x="150.08603"
-         style="font-size:52.32312392999999417px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#000000;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue;stroke-width:0.78484685;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-size:52.32312393px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.78484684;stroke-miterlimit:4;stroke-dasharray:none;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue"
          xml:space="preserve"><tspan
-           style="font-size:52.32312392999999417px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Candice;-inkscape-font-specification:Candice Bold;fill:#ffffff;stroke:#000000;stroke-width:0.78484685;stroke-miterlimit:4;stroke-dasharray:none"
-           y="291.41159"
+           style="font-size:47.09081268px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.78484684;stroke-miterlimit:4;stroke-dasharray:none;font-family:Komikandy;-inkscape-font-specification:Komikandy Bold"
+           y="296.64389"
            x="150.08603"
            id="top-left"
            sodipodi:role="line">tl</tspan></text>
@@ -149,37 +165,37 @@
          inkscape:connector-curvature="0" />
       <text
          xml:space="preserve"
-         style="font-size:52.32312392999999417px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#000000;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue;stroke-width:0.78484685;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-size:52.32312393px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.78484684;stroke-miterlimit:4;stroke-dasharray:none;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue"
          x="150.08603"
-         y="529.71472"
+         y="531.48816"
          id="bl_text"
          sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="bottom-left"
            x="150.08603"
-           y="529.71472"
-           style="font-size:52.32312392999999417px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;font-family:Candice;-inkscape-font-specification:Candice Bold;fill:#ffffff;stroke:#000000;stroke-width:0.78484685;stroke-miterlimit:4;stroke-dasharray:none">bl</tspan></text>
+           y="531.48816"
+           style="font-size:47.09081268px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.78484684;stroke-miterlimit:4;stroke-dasharray:none;font-family:Komikandy;-inkscape-font-specification:Komikandy Bold">bl</tspan></text>
       <text
          xml:space="preserve"
-         style="font-size:52.32312392999999417px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:#000000;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue;stroke-width:0.78484685;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-size:52.32312393px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.78484684;stroke-miterlimit:4;stroke-dasharray:none;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue"
          x="343.61484"
-         y="291.41159"
+         y="296.64389"
          id="tr_text"
          sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="top-right"
            x="343.61484"
-           y="291.41159"
-           style="font-size:52.32312392999999417px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;text-anchor:end;font-family:Candice;-inkscape-font-specification:Candice Bold;fill:#ffffff;stroke:#000000;stroke-width:0.78484685;stroke-miterlimit:4;stroke-dasharray:none">tr</tspan></text>
+           y="296.64389"
+           style="font-size:47.09081268px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke:#000000;stroke-width:0.78484684;stroke-miterlimit:4;stroke-dasharray:none;font-family:Komikandy;-inkscape-font-specification:Komikandy Bold">tr</tspan></text>
       <text
          sodipodi:linespacing="125%"
          id="br_text"
-         y="529.71472"
+         y="531.48816"
          x="343.61484"
-         style="font-size:52.32312392999999417px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:#000000;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue;stroke-width:0.78484685;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-size:52.32312393px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.78484684;stroke-miterlimit:4;stroke-dasharray:none;font-family:Helvetica Neue;-inkscape-font-specification:Helvetica Neue"
          xml:space="preserve"><tspan
-           style="font-size:52.32312392999999417px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;text-anchor:end;font-family:Candice;-inkscape-font-specification:Candice Bold;fill:#ffffff;stroke:#000000;stroke-width:0.78484685;stroke-miterlimit:4;stroke-dasharray:none"
-           y="529.71472"
+           style="font-size:47.09081268px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke:#000000;stroke-width:0.78484684;stroke-miterlimit:4;stroke-dasharray:none;font-family:Komikandy;-inkscape-font-specification:Komikandy Bold"
+           y="531.48816"
            x="343.61484"
            id="bottom-right"
            sodipodi:role="line">br</tspan></text>
