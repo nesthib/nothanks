@@ -9,6 +9,7 @@
   <script src="{{ url_for('static', filename='nothanks-socketio.js') }}"></script>
   <script src="{{ url_for('static', filename='noty/packaged/jquery.noty.packaged.js') }}"></script>
   <link href="{{ url_for('static', filename='nothanks.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='buttons.css') }}" rel="stylesheet">
 </head>
 <body>
   <div id="uuid"></div>
@@ -52,6 +53,9 @@
     </div>
     <div class="playzone">
       <div class="deck">
+        <div id="game-stop-div" class="hidden">
+          <p id="game-stop" class="fancytext" onclick="game_stop()">✘</p>
+        </div>
         <div id="card-up-div">
           <object class="card card-up" id="card-n!" type="image/svg+xml" data="/static/card.svg"></object>
         </div>
@@ -74,7 +78,7 @@
           <div>
             <object class="coin-player hidden" id="coinP" type="image/svg+xml" data="/static/coin.svg"></object>
           </div>
-          <div class="controls">
+          <div class="controls nodisplay">
             <form class="inlineform" id="play" method="POST" action="#">
               <input type="submit" value="Play">
             </form>

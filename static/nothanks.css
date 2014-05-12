@@ -28,12 +28,11 @@ html, body { width: 100%; margin: 0; }
     display: inline-block;
     vertical-align: middle;
     min-height: 155px;
-/*        width: 48%;*/
-    width: 48%;
+    width: 46%;
 /*        width: auto;*/
     border: 2px solid gray;
     border-radius: 10px;
-    padding: 5px 5px 5px 5px;
+    padding: 0 10px 10px 15px;
     margin-bottom: 5px;
 }
 .cardzone {
@@ -71,7 +70,7 @@ html, body { width: 100%; margin: 0; }
 }
 #card-0 {
     visibility: hidden;
-};
+}
 .playerinfo  {
 /*    display: inline-block;*/
     vertical-align: top;
@@ -94,6 +93,13 @@ html, body { width: 100%; margin: 0; }
     vertical-align: top;
     /*padding: 20px 50px 20px 50px;*/
 }
+#game-stop-div {
+    float: right;
+    margin-right: 15px;
+}
+#game-stop, .help, #p0-name {
+    cursor: pointer;
+}
 .chat, .deck, .player0info {
     display: inline-block;
     min-height: 200px;
@@ -102,7 +108,7 @@ html, body { width: 100%; margin: 0; }
 .player0 {
     vertical-align: top;
     /*height: 40%;*/
-    min-height: 129px;
+    min-height: 170px;
     max-width: 80%;
     /*max-height: 30em;*/
 /*        width: 57%;*/
@@ -129,6 +135,12 @@ html, body { width: 100%; margin: 0; }
 .fancytext {
     display: table-cell;
 }
+.fancytext, #nextplayer {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    -o-user-select: none;
+}
 .fancytext0, #nickdata {
     margin-top: -15px;
 }
@@ -148,6 +160,7 @@ html, body { width: 100%; margin: 0; }
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
 }
 .hidden {
     visibility: hidden;

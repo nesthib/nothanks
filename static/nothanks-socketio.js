@@ -34,7 +34,13 @@ $(document).ready(function() {
         return false;
     });
     socket_game.on('gamestart', function(msg) {
+        var SVG = document.getElementById('card-n!').getSVGDocument();
+        SVG.removeEventListener('click', game_join, false)
+        SVG.removeEventListener('click', game_start, false)
+        SVG.addEventListener('click', game_pick, false);
         update_players(msg.players, true);
+        document.getElementById('game-stop-div').classList.remove('hidden');
+        document.getElementById('coinP').classList.remove('hidden')
     });
     socket_game.on('gameplayers', function(msg) {
         update_players(msg.players);
@@ -88,11 +94,24 @@ $(document).ready(function() {
         //var name = $('#uuid').data('players')[msg.player]['name'];
         var name = msg.player;
         document.getElementById('nextplayer').textContent = name;
+        var my_name = $('#uuid').data('players')[$('#uuid').data('uuid')]['name']
+        if (name == my_name) noty({text: 'This is your turn '+name, layout: 'topRight', timeout: 3000, type:'information'}) ;
     });
-    //socket_game.on('gamewinner', function(msg) {
-        //var winner = $('#uuid').data('players')[uuid]['name']
-        //alert('Le gagnant est '+winner);
-    //});
+    socket_game.on('winner', function(msg) {
+        var noty_game_stop = noty({
+          text: msg.text,
+          type: (msg.success) ? 'success' : 'error',
+          modal: true,
+          layout: 'center',
+          buttons: [
+            {addClass: 'btn btn-primary', text: 'Reset', onClick: function($noty) {
+                game_reset();
+                $noty.close();
+                  }
+            },
+          ]
+        });
+    });
     socket_game.on('gameinfo', function(msg) {
         $('#card').text(msg.card);
         $('#bonus').text(msg.bonus);
@@ -127,4 +146,6 @@ $(document).ready(function() {
         socket_game.emit('debug');
         return false;
     });
+    document.socket_chat = socket
+    document.socket_game = socket_game
 });

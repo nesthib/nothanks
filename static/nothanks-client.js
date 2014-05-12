@@ -54,6 +54,15 @@ function on_load() {
   custom_cards();
   document.getElementById('coinC').getSVGDocument().getElementById('value').textContent = 0;
   document.getElementById('coinP').getSVGDocument().getElementById('value').textContent = 11;
+  var SVG = document.getElementById('card-n!').getSVGDocument();
+  SVG.getElementById('empty_bg').addEventListener('mouseover', function(){this.style.opacity=0.13;}, false);
+  SVG.getElementById('empty_bg').addEventListener('mouseout', function(){this.style.opacity=0;}, false);
+  SVG.addEventListener('click', game_join, false);
+  var SVG2 = document.getElementById('coinP').getSVGDocument();
+  SVG2.addEventListener('click', game_pass, false);
+  var SVG3 = document.getElementById('coinC').getSVGDocument();
+  SVG3.addEventListener('click', game_pick, false);
+  document.getElementById('nextplayer').textContent = "click to join"
 };
 function create_card(num) {
   var card = document.createElement("object");
@@ -168,23 +177,108 @@ function toggleNickinputForm() {
         document.getElementById('p0-name-p').classList.remove('nodisplay');
     };
 };
-function game_reset() {
-    // remove player hands
-    var cz = document.getElementsByClassName('cardzone');
-    for (var i=0; i < cz.length; i++) {
-        //cz[i].parentNode.removeChild(cz[i])
-        cz[i].remove()
-    }
-    // reset deck and coins
-    update_cardup('n!')
-    update_coins('coinC', 0)
-    update_coins('coinP', 0)
-    var ns = document.getElementsByClassName('nick')
-    var ss = document.getElementsByClassName('score')
-    for (var i=0; i<ns.length; i++) {
-        ns[i].textContent = ''
-        ss[i].textContent = 'ne joue pas'
-    }
+function game_reset(notif) {
+
+    if (typeof(notif) != 'undefined') {
+      var noty_game_stop = noty({
+        text: 'Game is over!',
+        layout: 'center',
+        buttons: [
+          {addClass: 'btn btn-primary', text: 'Yes', onClick: function($noty) {
+              game_reset();
+              $noty.close();
+              }
+          },
+        ]
+      });
+    } else {
+      // reset players zones
+      var pz = document.getElementsByClassName('player')
+      for (i=0; i<pz.length; i++) {pz[i].classList.remove('nodisplay');};
+      // remove player hands
+      var cg = document.getElementsByClassName('cardgroup');
+      while (cg.length>0) {cg[0].remove();};
+      // reset deck and coins
+      update_cardup('n!');
+      var cardup = document.getElementById('card-n!');
+      var SVG = document.getElementById('card-n!').getSVGDocument();
+      SVG.addEventListener('click', game_join, false);
+
+      update_coins('coinC', 0);
+      update_coins('coinP', 0);
+      var ns = document.getElementsByClassName('nick');
+      var ss = document.getElementsByClassName('score');
+      for (var i=0; i<ns.length; i++) {
+          ns[i].textContent = '';
+          ss[i].textContent = 'ne joue pas';
+      };
+      // reset player name (from form)
+      document.getElementById('p0-name').textContent = document.getElementById('nickdata').value
+    };
+};
+function game_stop() {
+    var noty_game_stop = noty({
+      text: 'Are you sure you want to stop the game? This will affect all the players!',
+      modal: true,
+      layout: 'center',
+      buttons: [
+        {addClass: 'btn btn-primary', text: 'Yes', onClick: function($noty) {
+            document.socket_game.emit('stop', {'confirm': true});
+            $noty.close();
+              }
+        },
+        {addClass: 'btn btn-danger', text: 'Cancel', onClick: function($noty) {
+            $noty.close();
+          }
+        }
+      ]
+    });
+};
+function game_start() {
+    var noty_game_stop = noty({
+      text: 'Start the game?',
+      modal: true,
+      layout: 'center',
+      buttons: [
+        {addClass: 'btn btn-primary', text: 'Yes', onClick: function($noty) {
+            document.socket_game.emit('start');
+            $noty.close();
+              }
+        },
+        {addClass: 'btn btn-danger', text: 'Cancel', onClick: function($noty) {
+            $noty.close();
+          }
+        }
+      ]
+    });
+};
+function game_join() {
+    var noty_game_stop = noty({
+      text: 'Join the game?',
+      modal: true,
+      layout: 'center',
+      buttons: [
+        {addClass: 'btn btn-primary', text: 'Yes', onClick: function($noty) {
+            document.socket_game.emit('play');
+            var SVG = document.getElementById('card-n!').getSVGDocument();
+            SVG.removeEventListener('click', game_join, false)
+            SVG.addEventListener('click', game_start, false);
+            document.getElementById('nextplayer').textContent = "click to start"
+            $noty.close();
+              }
+        },
+        {addClass: 'btn btn-danger', text: 'Cancel', onClick: function($noty) {
+            $noty.close();
+          }
+        }
+      ]
+    });
+};
+function game_pick() {
+    document.socket_game.emit('action', {'data': 'pick'});
+};
+function game_pass() {
+    document.socket_game.emit('action', {'data': 'pass'});
 };
 function rules() {
     r = "<h1>Rules</h1>\

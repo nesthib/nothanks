@@ -86,7 +86,7 @@ def chat_connect():
         num = len(nicks)
         while ("player%i" % num) in nicks.values():
             num += 1
-        session['nick'] = "player%i" % num
+        session['nick'] = "player-%i" % num
     nicks[uuid] = session['nick']
     emit_notification('Bonjour %s' % session['nick'])
     print('%s connected (%s)' % (uuid, session['nick']))
@@ -216,20 +216,45 @@ def game_stop(msg=None):
                               layout='center',
                               type='confirm')
             return
-        if (type(msg) is dict and 'confirm' in msg
-           and not msg['confirm'] is True):
-            return
+        if type(msg) is dict and 'confirm' in msg:
+            if msg['confirm'] is True:
+                emit_notification('%s has stopped the game' %
+                                  nicks[session['uuid']],
+                                  layout='center',
+                                  type='error',
+                                  broadcast=True)
+            else:
+                return
         player_scores = game.end()
         print('players scores: %s' % player_scores)
-        winner, winner_points = sorted(player_scores.items(),
-                                       key=lambda i: i[1])[0]
-        print('thewinneriz: %s' % winner)
-        emit_notification('The winner is %s.' % nicks[winner], type='success',
-                          layout='center', timeout=False, broadcast=True)
+        scores = sorted(player_scores.items(), key=lambda i: i[1])
+        winners = [p[0] for p in scores if p[1] == scores[0][1]]
+        print('thewinnerzare: %s' % str(winners))
+        if len(winners) == 1:
+            winner_text = 'The winner is %s.' % nicks[winners[0]]
+            emit('winner', {'text': winner_text, 'success': True},
+                 broadcast=True)
+            # emit_notification(winner_text,
+            #                   type='success', layout='center',
+            #                   timeout=False, broadcast=True)
+        elif len(winners) == len(player_scores):
+            winner_text = "Nobody wins…"
+            emit('winner', {'text': winner_text, 'success': False},
+                 broadcast=True)
+            # emit_notification(winner_text, type='success', layout='center',
+            #                   timeout=False, broadcast=True)
+        else:
+            winner_text = ('The winners are %s.' %
+                           ', '.join([nicks[w] for w in winners]))
+            emit('winner', {'text': winner_text, 'success': True},
+                 broadcast=True)
+            # emit_notification(winner_text,
+            #                   type='success', layout='center',
+            #                   timeout=False, broadcast=True)
         # emit('gamewinner', {'winner': winner}, broadcast=True)
-        emit('gameoutput',
-             {'text': 'The winner is %s' % winner},
-             broadcast=True)
+        # emit('gameoutput',
+        #      {'text': 'The winner is %s' % winner},
+        #      broadcast=True)
     else:
         emit_notification('Game is not started yet.\
                           If everyone is ready press START',
